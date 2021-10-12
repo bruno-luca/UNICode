@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Prova{
+public class Input{
 	public static void main(String[] args){
 		/*
 		
