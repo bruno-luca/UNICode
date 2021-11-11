@@ -1,3 +1,6 @@
+import javax.sound.sampled.SourceDataLine;
+import java.util.*;
+
 public class AritNatIter {
 
     // metodo che implementa la somma di due numeri x e y, 
@@ -26,17 +29,60 @@ public class AritNatIter {
         return m;
     }
 
+    public static int max(int x, int y){
+        if (x > y){
+            return x;
+        }else{
+            return y;
+        }
+    }
+
+    public static int sommatoria(int x){
+        int s = 0;
+        for(int i = 1; i <= x; i++){
+            s += i;
+        }
+        return s;
+    }
+
+    public static int fattoriale(int x){
+        int f = 1;
+        while(x > 0){
+            f = f*x;
+            x--;
+        }
+        return f;
+    }
+
+    public static int potenza(int b, int e){
+
+        int ripeti = (e < 0) ? -e: e;
+        int pot = b;
+
+        if(e == 0){
+            return 1;
+        }else{
+            while(ripeti>1){
+                pot = pot*b;
+                ripeti--;
+            }
+            return pot;
+        }
+    }
+
     public static void main(String[] args) {
         // Test della somma
         System.out.println("33 + 3 = " + somma(33, 3) + ", atteso: " + (33+3));
         System.out.println("4 + 0 = " + somma(4, 0) + ", atteso: " + (4+0));
 
         // Verifica commutatività della somma
-        System.out.println(somma(33, 3) == somma(3, 33));
-        System.out.println(somma(4, 0) == somma(0, 4));
+        System.out.println("33 + 3 == 3 + 33: " + (somma(33, 3) == somma(3, 33)));
+        System.out.println("4 + 0 == 0 + 4" + (somma(4, 0) == somma(0, 4)));
 
         // ESERCIZIO: verificare associatività somma con alcuni esempi di test
         //            (x+y)+z == x+(y+z)
+
+        System.out.println("(33 + 3) + 4 == 33 + (3 + 4): " + (somma(somma(33, 3), 4) == somma(33, somma(3, 4))));
 
 
         // Test metodo moltiplicazione 
@@ -52,5 +98,16 @@ public class AritNatIter {
 
         // ESERCIZIO: verificare associatività moltiplicazione con alcuni esempi di test
         //            (x*y)*z == x*(y*z)
+        System.out.println("(33 * 3) * 4 == 33 * (3 * 4): " + (moltiplicazione(moltiplicazione(33, 3), 4) == moltiplicazione(33, moltiplicazione(3, 4))));
+
+        System.out.println("massimo 4, 3 = " + max(3, 4));
+
+        System.out.println("Sommatoria 5 = " + sommatoria(5));
+
+        System.out.println("Fattoriale 5 = " + fattoriale(5));
+
+        System.out.println("-2^3 = " + potenza(-2, 3));
+
+        
     }
 }
